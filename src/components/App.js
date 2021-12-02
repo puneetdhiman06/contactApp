@@ -1,5 +1,6 @@
 
 import React,{useState,useEffect} from 'react';
+import {BrowserRouter as Router,Swtich,Route}from "react-router-dom"
 import {uuid} from 'uuidv4';
 import './App.css';
 import Header from './Header';
@@ -33,9 +34,13 @@ const LOCAL_STORAGE_KEY = "contacts";
  }, [contacts]);
  return (
     <div>
+      <Router>
       <Header/>
-      <Addcontact addContactHandler={addContactHandler}/>
-      <ContactList contact={contacts} getContactId={removeContactHandler} />
+      <Route path="/add" component={Addcontact}/>
+      <Route path="/" component={ContactList}/>
+      {/* <Addcontact addContactHandler={addContactHandler}/> */}
+      {/* <ContactList contact={contacts} getContactId={removeContactHandler} />     */}
+      </Router>
     </div>
   );
 }
